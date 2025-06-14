@@ -515,7 +515,7 @@ recover_password() {
     secure_delete_file "$file_path"
     
     return 0
-fi
+}
 
 
 recover_locksettings_db() {
@@ -561,7 +561,7 @@ recover_wifi_passwords() {
     if ! execute_with_retry "adb -s $device_serial shell 'test -f $wifi_file && echo exists'" "WiFi config check" | grep -q "exists"; then
         log "ERROR" "Wi-Fi configuration file not found on device. Exiting."
         return 1
-    }
+    fi
 
   
     execute_with_retry "adb -s $device_serial shell 'su -c \"chmod 644 $wifi_file\"'" "Setting permissions" || true
